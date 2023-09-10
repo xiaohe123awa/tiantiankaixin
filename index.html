@@ -1,0 +1,109 @@
+  <style>
+
+  .popup-container {
+
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+animation: popOut .4s ease-in-out forwards;
+transform-origin: center center;
+transform: scale(0);
+}
+@keyframes popOut {
+to { transform: scale(1); }
+}
+
+
+
+  .popup-content {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 6px; /* 添加弹窗的圆角边框 */
+  }
+
+  .popup-title {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000000
+  }
+
+  .popup-text {
+ text-align: left;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color:	#808080
+  }
+
+  .popup-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 20px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 4px; /* 添加圆角 */
+    background-color: #B0C4DE;
+  }
+  
+  .slide-container {
+width: 100%;
+height: 200px;
+overflow: hidden; /* 隐藏超出部分 */
+}
+.slide-content {
+width: 100%; /* 比容器宽度多一定值，保证有滚动条 */
+height: 100%;
+padding: 5px;  /* 内容区域留白 */
+overflow-y: scroll; /* y方向滚动 */
+}
+}
+</style>
+
+<div class="popup-container">
+  <div class="popup-content">
+    <h2 class="popup-title">滑动窗体弹窗公告模板，这里写标题</h2>
+    <div class="popup"><div class="slide-container"><div class="slide-content"><p class="popup-text">
+      这里写你需要的公告内容，不限长度，弹窗不会受到字数影响拉伸高度！
+      </font></i></div>
+</div></div>
+    </p>
+    <button class="popup-button" id="popup-button">我已知晓
+  </div>
+</div>
+
+<script>
+  var popupContainer = document.querySelector('.popup-container');
+  var popupButton = document.getElementById('popup-button');
+
+  // 显示弹窗
+  function showPopup() {
+    popupContainer.style.display = 'flex';
+  }
+
+  // 隐藏弹窗
+  function hidePopup() {
+    popupContainer.style.display = 'none';
+  }
+
+  // 显示初始弹窗
+  showPopup();
+
+  // 处理关闭按钮点击事件
+  popupButton.addEventListener('click', hidePopup);
+</script>
+
+</body>
+</html>
