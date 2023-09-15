@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 引入css文件 -->
+        <link rel="stylesheet" href="./login.css">
+        <!-- 引入jquery -->
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <title>登录</title>
+    </head>
+    <body>
+          <style>
+
+  .popup-container {
+
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+animation: popOut .4s ease-in-out forwards;
+transform-origin: center center;
+transform: scale(0);
+}
+@keyframes popOut {
+to { transform: scale(1); }
+}
+
+
+
+  .popup-content {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 6px; /* 添加弹窗的圆角边框 */
+  }
+
+  .popup-title {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000000
+  }
+
+  .popup-text {
+ text-align: left;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color:	#808080
+  }
+
+  .popup-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 20px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 4px; /* 添加圆角 */
+    background-color: #B0C4DE;
+  }
+  
+  .slide-container {
+width: 100%;
+height: 200px;
+overflow: hidden; /* 隐藏超出部分 */
+}
+.slide-content {
+width: 100%; /* 比容器宽度多一定值，保证有滚动条 */
+height: 100%;
+padding: 5px;  /* 内容区域留白 */
+overflow-y: scroll; /* y方向滚动 */
+}
+}
+</style>
+
+<div class="popup-container">
+  <div class="popup-content">
+    <h2 class="popup-title">滑动窗体弹窗公告模板，这里写标题</h2>
+    <div class="popup"><div class="slide-container"><div class="slide-content"><p class="popup-text">
+      这里写你需要的公告内容，不限长度，弹窗不会受到字数影响拉伸高度！
+      </font></i></div>
+</div></div>
+    </p>
+    <button class="popup-button" id="popup-button">我已知晓
+  </div>
+</div>
+
+<script>
+  var popupContainer = document.querySelector('.popup-container');
+  var popupButton = document.getElementById('popup-button');
+
+  // 显示弹窗
+  function showPopup() {
+    popupContainer.style.display = 'flex';
+  }
+
+  // 隐藏弹窗
+  function hidePopup() {
+    popupContainer.style.display = 'none';
+  }
+
+  // 显示初始弹窗
+  showPopup();
+
+  // 处理关闭按钮点击事件
+  popupButton.addEventListener('click', hidePopup);
+</script>
+        <!-- 最外层的大盒子 -->
+       <div class="box">
+        <!-- 滑动盒子 -->
+        <div class="pre-box">
+            <h1>WELCOME</h1>
+            <p>小鹤天天开心!</p>
+            <div class="img-box">
+                <img src="./img/waoku.jpg" alt="">
+            </div>
+        </div>
+        <!-- 注册盒子 -->
+        <div class="register-form">
+            <!-- 标题盒子 -->
+            <div class="title-box">
+                <h1>注册</h1>
+            </div>
+            <!-- 输入框盒子 -->
+            <div class="input-box">
+                <input type="text" placeholder="用户名">
+                <input type="password" placeholder="密码">
+                <input type="password" placeholder="确认密码">
+            </div>
+            <!-- 按钮盒子 -->
+            <div class="btn-box">
+                <button>注册</button>
+                <!-- 绑定点击事件 -->
+                <p onclick="mySwitch()">已有账号?去登录</p>
+            </div>
+        </div>
+        <!-- 登录盒子 -->
+        <div class="login-form">
+            <!-- 标题盒子 -->
+            <div class="title-box">
+                <h1>登录</h1>
+            </div>
+            <!-- 输入框盒子 -->
+            <div class="input-box">
+                <input type="text" placeholder="用户名">
+                <input type="password" placeholder="密码">
+            </div>
+            <!-- 按钮盒子 -->
+            <div class="btn-box">
+                <button>登录</button>
+                <!-- 绑定点击事件 -->
+                <p onclick="mySwitch()">没有账号?去注册</p>
+            </div>
+        </div>
+       </div>
+       <script>
+            // 滑动的状态
+             let flag=true
+             const mySwitch=()=>{
+                if(flag){
+                    // 获取到滑动盒子的dom元素并修改它移动的位置
+                    $(".pre-box").css("transform","translateX(100%)")
+                    // 获取到滑动盒子的dom元素并修改它的背景颜色
+                    $(".pre-box").css("background-color","#c9e0ed")
+                    //修改图片的路径
+                    $("img").attr("src","./img/wuwu.jpeg")
+                    
+                }
+                else {
+                    $(".pre-box").css("transform","translateX(0%)")
+                    $(".pre-box").css("background-color","#edd4dc")
+                    $("img").attr("src","./img/waoku.jpg")
+                }
+                flag=!flag
+             }
+       </script>
+       <script>
+            const bubleCreate=()=>{
+                // 获取body元素
+                const body = document.body
+                // 创建泡泡元素
+                const buble = document.createElement('span')
+                // 设置泡泡半径
+                let r = Math.random()*5 + 25 //半径大小为25~30
+                // 设置泡泡的宽高
+                buble.style.width=r+'px'
+                buble.style.height=r+'px'
+                // 设置泡泡的随机起点
+                buble.style.left=Math.random()*innerWidth+'px'
+                // 为body添加buble元素
+                body.append(buble)
+                // 4s清除一次泡泡
+                setTimeout(()=>{
+                    buble.remove()
+                },4000)
+            }
+            // 每200ms生成一个泡泡
+            setInterval(() => {
+                bubleCreate()
+            }, 200);
+        </script>
+    </body>
+</html>
